@@ -1,0 +1,752 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>TiDB Binlog · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="010_backup_and_recovery.html" />
+    
+    
+    <link rel="prev" href="008_dm.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../01-base/">
+            
+                <a href="../01-base/">
+            
+                    
+                    基础篇
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../01-base/001_database_history.html">
+            
+                <a href="../01-base/001_database_history.html">
+            
+                    
+                    数据库发展历史
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../01-base/002_tidb_architecture.html">
+            
+                <a href="../01-base/002_tidb_architecture.html">
+            
+                    
+                    TiDB 架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../01-base/003_difference_between_tidb_and_mysql.html">
+            
+                <a href="../01-base/003_difference_between_tidb_and_mysql.html">
+            
+                    
+                    TiDB 与 MySQL 的区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    实操篇
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="004_install_tidb.html">
+            
+                <a href="004_install_tidb.html">
+            
+                    
+                    安装部署 TiDB 集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="005_ops.html">
+            
+                <a href="005_ops.html">
+            
+                    
+                    TiDB 日常运维操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="006_scale_tidb.html">
+            
+                <a href="006_scale_tidb.html">
+            
+                    
+                    扩缩容 TiDB 集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="007_upgrade_tidb.html">
+            
+                <a href="007_upgrade_tidb.html">
+            
+                    
+                    升级 TiDB 集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="008_dm.html">
+            
+                <a href="008_dm.html">
+            
+                    
+                    MySQL 同步至 TiDB 工具——DM(Data Migration)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.6" data-path="009_tidb_binlog.html">
+            
+                <a href="009_tidb_binlog.html">
+            
+                    
+                    TiDB Binlog
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="010_backup_and_recovery.html">
+            
+                <a href="010_backup_and_recovery.html">
+            
+                    
+                    TiDB 备份与恢复
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="011_tidb_monitor.html">
+            
+                <a href="011_tidb_monitor.html">
+            
+                    
+                    TiDB 监控
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9" data-path="012_disaster_recovery.html">
+            
+                <a href="012_disaster_recovery.html">
+            
+                    
+                    灾难恢复
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.10" data-path="013_cross_db_deployment_solution.md">
+            
+                <span>
+            
+                    
+                    跨数据中心部署方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.11" data-path="performance/">
+            
+                <a href="performance/">
+            
+                    
+                    性能压测
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.11.1" data-path="performance/014_sysbench.html">
+            
+                <a href="performance/014_sysbench.html">
+            
+                    
+                    Sybench 压测
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.11.2" data-path="performance/015_tpcc.html">
+            
+                <a href="performance/015_tpcc.html">
+            
+                    
+                    TPCC 压测
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../03-internel/">
+            
+                <a href="../03-internel/">
+            
+                    
+                    原理篇
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../03-internel/017_storage_engine.html">
+            
+                <a href="../03-internel/017_storage_engine.html">
+            
+                    
+                    存储引擎
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../03-internel/transaction/">
+            
+                <a href="../03-internel/transaction/">
+            
+                    
+                    事务模型
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.2.1" data-path="../03-internel/transaction/018_optimistic.html">
+            
+                <a href="../03-internel/transaction/018_optimistic.html">
+            
+                    
+                    乐观事务模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.2" data-path="../03-internel/transaction/019_pessmistic.html">
+            
+                <a href="../03-internel/transaction/019_pessmistic.html">
+            
+                    
+                    悲观事务模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../03-internel/020_index.html">
+            
+                <a href="../03-internel/020_index.html">
+            
+                    
+                    索引
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../03-internel/021_tidb_dml.html">
+            
+                <a href="../03-internel/021_tidb_dml.html">
+            
+                    
+                    TiDB DML 语句
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../03-internel/022_tidb_ddl.html">
+            
+                <a href="../03-internel/022_tidb_ddl.html">
+            
+                    
+                    TiDB DDL 语句
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../03-internel/sql-optimize/">
+            
+                <a href="../03-internel/sql-optimize/">
+            
+                    
+                    SQL 优化器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.6.1" data-path="../03-internel/sql-optimize/023_optimizer_introduction.html">
+            
+                <a href="../03-internel/sql-optimize/023_optimizer_introduction.html">
+            
+                    
+                    优化器概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6.2" data-path="../03-internel/sql-optimize/024_statistics.html">
+            
+                <a href="../03-internel/sql-optimize/024_statistics.html">
+            
+                    
+                    统计信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6.3" data-path="../03-internel/sql-optimize/025_logical_optimize.html">
+            
+                <a href="../03-internel/sql-optimize/025_logical_optimize.html">
+            
+                    
+                    优化器之逻辑优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6.4" data-path="../03-internel/sql-optimize/03_06_04_physical_optimize.md">
+            
+                <span>
+            
+                    
+                    优化器之物理优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6.5" data-path="../03-internel/sql-optimize/03_06_05_coprocessor.md">
+            
+                <span>
+            
+                    
+                    常用算子介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6.6" data-path="../03-internel/sql-optimize/03_06_06_explain.md">
+            
+                <span>
+            
+                    
+                    理解SQL执行计划
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../03-internel/026_gc.html">
+            
+                <a href="../03-internel/026_gc.html">
+            
+                    
+                    GC 机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../04-new-features/">
+            
+                <a href="../04-new-features/">
+            
+                    
+                    4.0新特性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../05-appendix/">
+            
+                <a href="../05-appendix/">
+            
+                    
+                    附录
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../05-appendix/a_tidb_arguments.html">
+            
+                <a href="../05-appendix/a_tidb_arguments.html">
+            
+                    
+                    附录A TiDB 参数
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >TiDB Binlog</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="008_dm.html" class="navigation navigation-prev " aria-label="Previous page: MySQL 同步至 TiDB 工具——DM(Data Migration)">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="010_backup_and_recovery.html" class="navigation navigation-next " aria-label="Next page: TiDB 备份与恢复">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"TiDB Binlog","level":"1.3.6","depth":2,"next":{"title":"TiDB 备份与恢复","level":"1.3.7","depth":2,"path":"02-operation/010_backup_and_recovery.md","ref":"02-operation/010_backup_and_recovery.md","articles":[]},"previous":{"title":"MySQL 同步至 TiDB 工具——DM(Data Migration)","level":"1.3.5","depth":2,"path":"02-operation/008_dm.md","ref":"02-operation/008_dm.md","articles":[]},"dir":"neutral"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"02-operation/009_tidb_binlog.md","mtime":"2021-03-08T08:43:24.313Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-08T08:44:09.992Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

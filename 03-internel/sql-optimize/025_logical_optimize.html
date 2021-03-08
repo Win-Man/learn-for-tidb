@@ -1,0 +1,796 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>优化器之逻辑优化 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="03_06_04_physical_optimize.md" />
+    
+    
+    <link rel="prev" href="024_statistics.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../01-base/">
+            
+                <a href="../../01-base/">
+            
+                    
+                    基础篇
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../01-base/001_database_history.html">
+            
+                <a href="../../01-base/001_database_history.html">
+            
+                    
+                    数据库发展历史
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../01-base/002_tidb_architecture.html">
+            
+                <a href="../../01-base/002_tidb_architecture.html">
+            
+                    
+                    TiDB 架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../../01-base/003_difference_between_tidb_and_mysql.html">
+            
+                <a href="../../01-base/003_difference_between_tidb_and_mysql.html">
+            
+                    
+                    TiDB 与 MySQL 的区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../02-operation/">
+            
+                <a href="../../02-operation/">
+            
+                    
+                    实操篇
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../../02-operation/004_install_tidb.html">
+            
+                <a href="../../02-operation/004_install_tidb.html">
+            
+                    
+                    安装部署 TiDB 集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../../02-operation/005_ops.html">
+            
+                <a href="../../02-operation/005_ops.html">
+            
+                    
+                    TiDB 日常运维操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../../02-operation/006_scale_tidb.html">
+            
+                <a href="../../02-operation/006_scale_tidb.html">
+            
+                    
+                    扩缩容 TiDB 集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../../02-operation/007_upgrade_tidb.html">
+            
+                <a href="../../02-operation/007_upgrade_tidb.html">
+            
+                    
+                    升级 TiDB 集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../../02-operation/008_dm.html">
+            
+                <a href="../../02-operation/008_dm.html">
+            
+                    
+                    MySQL 同步至 TiDB 工具——DM(Data Migration)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../../02-operation/009_tidb_binlog.html">
+            
+                <a href="../../02-operation/009_tidb_binlog.html">
+            
+                    
+                    TiDB Binlog
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="../../02-operation/010_backup_and_recovery.html">
+            
+                <a href="../../02-operation/010_backup_and_recovery.html">
+            
+                    
+                    TiDB 备份与恢复
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="../../02-operation/011_tidb_monitor.html">
+            
+                <a href="../../02-operation/011_tidb_monitor.html">
+            
+                    
+                    TiDB 监控
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9" data-path="../../02-operation/012_disaster_recovery.html">
+            
+                <a href="../../02-operation/012_disaster_recovery.html">
+            
+                    
+                    灾难恢复
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.10" data-path="../../02-operation/013_cross_db_deployment_solution.md">
+            
+                <span>
+            
+                    
+                    跨数据中心部署方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.11" data-path="../../02-operation/performance/">
+            
+                <a href="../../02-operation/performance/">
+            
+                    
+                    性能压测
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.11.1" data-path="../../02-operation/performance/014_sysbench.html">
+            
+                <a href="../../02-operation/performance/014_sysbench.html">
+            
+                    
+                    Sybench 压测
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.11.2" data-path="../../02-operation/performance/015_tpcc.html">
+            
+                <a href="../../02-operation/performance/015_tpcc.html">
+            
+                    
+                    TPCC 压测
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    原理篇
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../017_storage_engine.html">
+            
+                <a href="../017_storage_engine.html">
+            
+                    
+                    存储引擎
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../transaction/">
+            
+                <a href="../transaction/">
+            
+                    
+                    事务模型
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.2.1" data-path="../transaction/018_optimistic.html">
+            
+                <a href="../transaction/018_optimistic.html">
+            
+                    
+                    乐观事务模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.2" data-path="../transaction/019_pessmistic.html">
+            
+                <a href="../transaction/019_pessmistic.html">
+            
+                    
+                    悲观事务模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../020_index.html">
+            
+                <a href="../020_index.html">
+            
+                    
+                    索引
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../021_tidb_dml.html">
+            
+                <a href="../021_tidb_dml.html">
+            
+                    
+                    TiDB DML 语句
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../022_tidb_ddl.html">
+            
+                <a href="../022_tidb_ddl.html">
+            
+                    
+                    TiDB DDL 语句
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    SQL 优化器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.6.1" data-path="023_optimizer_introduction.html">
+            
+                <a href="023_optimizer_introduction.html">
+            
+                    
+                    优化器概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6.2" data-path="024_statistics.html">
+            
+                <a href="024_statistics.html">
+            
+                    
+                    统计信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.6.3" data-path="025_logical_optimize.html">
+            
+                <a href="025_logical_optimize.html">
+            
+                    
+                    优化器之逻辑优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6.4" data-path="03_06_04_physical_optimize.md">
+            
+                <span>
+            
+                    
+                    优化器之物理优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6.5" data-path="03_06_05_coprocessor.md">
+            
+                <span>
+            
+                    
+                    常用算子介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6.6" data-path="03_06_06_explain.md">
+            
+                <span>
+            
+                    
+                    理解SQL执行计划
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../026_gc.html">
+            
+                <a href="../026_gc.html">
+            
+                    
+                    GC 机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../04-new-features/">
+            
+                <a href="../../04-new-features/">
+            
+                    
+                    4.0新特性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../05-appendix/">
+            
+                <a href="../../05-appendix/">
+            
+                    
+                    附录
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../../05-appendix/a_tidb_arguments.html">
+            
+                <a href="../../05-appendix/a_tidb_arguments.html">
+            
+                    
+                    附录A TiDB 参数
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >优化器之逻辑优化</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <table>
+<thead>
+<tr>
+<th>Author</th>
+<th>Reviewer</th>
+<th>Version</th>
+<th>Update Time</th>
+<th>link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x6C88;&#x521A;</td>
+<td>-</td>
+<td>v1.0</td>
+<td>2021-03-08</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h1 id="&#x4F18;&#x5316;&#x5668;&#x4E4B;&#x903B;&#x8F91;&#x4F18;&#x5316;">&#x4F18;&#x5316;&#x5668;&#x4E4B;&#x903B;&#x8F91;&#x4F18;&#x5316;</h1>
+<p>&#x5728; TiDB &#x4E2D;&#xFF0C; SQL &#x4F18;&#x5316;&#x7684;&#x8FC7;&#x7A0B;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x903B;&#x8F91;&#x4F18;&#x5316;&#x548C;&#x7269;&#x7406;&#x90E8;&#x5206;&#x3002;&#x903B;&#x8F91;&#x4F18;&#x5316;&#x4E3B;&#x8981;&#x662F;&#x57FA;&#x4E8E;&#x89C4;&#x5219;&#x7684;&#x4F18;&#x5316;&#xFF0C;&#x7B80;&#x79F0; RBO&#x3002;&#x7269;&#x7406;&#x4F18;&#x5316;&#x4F1A;&#x4E3A;&#x903B;&#x8F91;&#x67E5;&#x8BE2;&#x8BA1;&#x5212;&#x4E2D;&#x7684;&#x7B97;&#x5B50;&#x9009;&#x62E9;&#x67D0;&#x4E2A;&#x5177;&#x4F53;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x9700;&#x8981;&#x7528;&#x5230;&#x4E00;&#x4E9B;&#x7EDF;&#x8BA1;&#x4FE1;&#x606F;&#xFF0C;&#x51B3;&#x5B9A;&#x54EA;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#x4EE3;&#x4EF7;&#x6700;&#x4F4E;&#xFF0C;&#x6240;&#x4EE5;&#x662F;&#x57FA;&#x4E8E;&#x4EE3;&#x4EF7;&#x7684;&#x4F18;&#x5316; CBO&#x3002;</p>
+<p>&#x672C;&#x7AE0;&#x4F1A;&#x4ECB;&#x7ECD; TiDB &#x4E2D;&#x4E3B;&#x8981;&#x7684;&#x96C6;&#x4E2D;&#x903B;&#x8F91;&#x4F18;&#x5316;&#x89C4;&#x5219;&#x3002;</p>
+<h2 id="&#x57FA;&#x672C;&#x903B;&#x8F91;&#x7B97;&#x5B50;&#x4ECB;&#x7ECD;">&#x57FA;&#x672C;&#x903B;&#x8F91;&#x7B97;&#x5B50;&#x4ECB;&#x7ECD;</h2>
+<p>TiDB &#x4E2D;&#x7684;&#x903B;&#x8F91;&#x7B97;&#x5B50;&#x4E3B;&#x8981;&#x4EE5;&#x4E0B;&#x51E0;&#x4E2A;&#xFF1A;</p>
+<ul>
+<li>DataSource&#xFF1A;&#x6570;&#x636E;&#x6E90;&#xFF0C;&#x4EE3;&#x8868;&#x4E00;&#x4E2A;&#x6E90;&#x8868;&#xFF0C;select * from t &#x91CC;&#x9762;&#x7684; t&#x3002;</li>
+<li>Selection&#xFF1A; &#x4EE3;&#x8868;&#x4E86;&#x76F8;&#x5E94;&#x7684;&#x8FC7;&#x6EE4;&#x6761;&#x4EF6;&#xFF0C;select * from t where a = 5 &#x91CC;&#x9762;&#x7684; where a = 5&#x3002;</li>
+<li>Projection&#xFF1A;&#x6295;&#x5F71;&#x64CD;&#x4F5C;&#xFF0C;&#x4E5F;&#x7528;&#x4E8E;&#x8868;&#x8FBE;&#x5F0F;&#x8BA1;&#x7B97;&#xFF0C; select c, a +b from t &#x91CC;&#x9762;&#x7684; c &#x548C; a + b&#x5C31;&#x662F;&#x6295;&#x5F71;&#x548C;&#x8868;&#x8FBE;&#x5F0F;&#x8BA1;&#x7B97;&#x64CD;&#x4F5C;&#x3002;</li>
+<li>Join&#xFF1A;&#x4E24;&#x4E2A;&#x8868;&#x7684;&#x8FDE;&#x63A5;&#x64CD;&#x4F5C;&#xFF0C;select t1.b, t2.c from t1 join t2 on t1.a = t2.a &#x4E2D;&#x7684; t1 join t2 on t1.a = t2.a &#x5C31;&#x662F;&#x4E24;&#x4E2A;&#x8868; t1 &#x548C; t2 &#x7684;&#x8FDE;&#x63A5;&#x64CD;&#x4F5C;&#x3002;Join &#x6709;&#x5185;&#x8FDE;&#x63A5;&#xFF0C;&#x5DE6;&#x8FDE;&#x63A5;&#xFF0C;&#x53F3;&#x8FDE;&#x63A5;&#x7B49;&#x591A;&#x79CD;&#x8FDE;&#x63A5;&#x65B9;&#x5F0F;&#x3002;</li>
+<li>Sort&#xFF1A;&#x5C31;&#x662F; select xx from xx order by &#x91CC;&#x9762;&#x7684; order by</li>
+<li>Aggregation&#xFF1A; &#x5728; select sum(xx) from xx group by yy &#x4E2D;&#x7684; group by &#x64CD;&#x4F5C;&#xFF0C;&#x6309;&#x67D0;&#x4E9B;&#x5217;&#x5206;&#x7EC4;&#x3002;&#x5206;&#x7EC4;&#x4E4B;&#x540E;&#xFF0C;&#x53EF;&#x80FD;&#x5E26;&#x4E00;&#x4E9B;&#x805A;&#x5408;&#x51FD;&#x6570;&#xFF0C;&#x6BD4;&#x5982; Max/Min/Sum/Count/Average &#x7B49;</li>
+<li>Apply&#xFF1A;&#x7528;&#x4E8E;&#x505A;&#x5B50;&#x67E5;&#x8BE2;</li>
+</ul>
+<p>Selection&#xFF0C;Projection&#xFF0C;Join&#xFF08;&#x7B80;&#x79F0; SPJ&#xFF09; &#x662F;&#x6700;&#x57FA;&#x672C;&#x7684; 3 &#x79CD;&#x7B97;&#x5B50;&#x3002;</p>
+<h2 id="&#x5217;&#x88C1;&#x526A;">&#x5217;&#x88C1;&#x526A;</h2>
+<p>&#x5217;&#x526A;&#x88C1;&#x7684;&#x57FA;&#x672C;&#x601D;&#x60F3;&#x5728;&#x4E8E;</p>
+<h2 id="&#x5206;&#x533A;&#x88C1;&#x526A;">&#x5206;&#x533A;&#x88C1;&#x526A;</h2>
+<h2 id="&#x5173;&#x8054;&#x5B50;&#x67E5;&#x8BE2;&#x53BB;&#x5173;&#x8054;">&#x5173;&#x8054;&#x5B50;&#x67E5;&#x8BE2;&#x53BB;&#x5173;&#x8054;</h2>
+<h2 id="&#x5B50;&#x67E5;&#x8BE2;&#x76F8;&#x5173;&#x7684;&#x4F18;&#x5316;">&#x5B50;&#x67E5;&#x8BE2;&#x76F8;&#x5173;&#x7684;&#x4F18;&#x5316;</h2>
+<h2 id="maxmin-&#x6D88;&#x9664;">Max/Min &#x6D88;&#x9664;</h2>
+<h2 id="&#x8C13;&#x8BCD;&#x4E0B;&#x63A8;">&#x8C13;&#x8BCD;&#x4E0B;&#x63A8;</h2>
+<h2 id="topn-&#x548C;-limit-&#x4E0B;&#x63A8;">TopN &#x548C; Limit &#x4E0B;&#x63A8;</h2>
+<h2 id="join-reorder">Join Reorder</h2>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="024_statistics.html" class="navigation navigation-prev " aria-label="Previous page: 统计信息">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="03_06_04_physical_optimize.md" class="navigation navigation-next " aria-label="Next page: 优化器之物理优化">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"优化器之逻辑优化","level":"1.4.6.3","depth":3,"next":{"title":"优化器之物理优化","level":"1.4.6.4","depth":3,"path":"03-internel/sql-optimize/03_06_04_physical_optimize.md","ref":"03-internel/sql-optimize/03_06_04_physical_optimize.md","articles":[]},"previous":{"title":"统计信息","level":"1.4.6.2","depth":3,"path":"03-internel/sql-optimize/024_statistics.md","ref":"03-internel/sql-optimize/024_statistics.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"03-internel/sql-optimize/025_logical_optimize.md","mtime":"2021-03-08T08:43:24.313Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-08T08:44:09.992Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
